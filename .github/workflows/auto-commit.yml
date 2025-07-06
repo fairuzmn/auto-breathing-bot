@@ -47,10 +47,10 @@ jobs:
       - name: Check for changes
         id: check_diff
         run: |
-          if git diff --quiet; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
+          if [[ -n $(git status --porcelain) ]]; then
             echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Commit changes

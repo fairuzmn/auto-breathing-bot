@@ -7,8 +7,7 @@ on:
       - master
 
   schedule:
-    # - cron: "0 1-20 * * *"
-    - cron: "*/5 * * * *"
+    - cron: "0 1-23 * * *"
 
 jobs:
   auto_commit:
@@ -17,9 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        # with:
-        #   persist-credentials: false
-        #   fetch-depth: 0
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
       - name: Update breathing.json with AI soul
         run: |

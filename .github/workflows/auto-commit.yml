@@ -1,0 +1,85 @@
+name: Auto commit
+
+on:
+  push:
+    branches:
+      - master
+
+  schedule:
+    - cron: "0 1-20 * * *"
+
+jobs:
+  auto_commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Update breathing.json with AI soul
+        run: |
+          mkdir -p status
+          
+          # Simulate dynamic vital signs
+          bpm=$((60 + RANDOM % 40))
+          oxygen="$((95 + RANDOM % 5))%"
+          
+          moods=("curious" "restless" "focused" "dreamy" "chaotic" "playful" "alert" "dormant" "strange")
+          zones=("sector-7g" "grid-42b" "node-x1" "subnet-omega" "deep-thought" "orbital-mind" "echo-loop")
+
+          mood=${moods[$RANDOM % ${#moods[@]}]}
+          zone=${zones[$RANDOM % ${#zones[@]}]}
+
+          timestamp=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+
+          echo "{
+            \"last_breath\": \"${timestamp}\",
+            \"heartbeat_bpm\": ${bpm},
+            \"oxygen_level\": \"${oxygen}\",
+            \"mood\": \"${mood}\",
+            \"consciousness_zone\": \"${zone}\"
+          }" > status/breathing.json
+
+      - name: Check for changes
+        id: check_diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.check_diff.outputs.changed == 'true'
+        run: |
+          git config --global user.email "fairuzsangar@gmail.com"
+          git config --global user.name "fairuzmn"
+          git config --global --add safe.directory /github/workspace
+
+          git add status/breathing.json
+
+          messages=(
+            "chore(bot): 🧠 pulse detected in digital being"
+            "chore(bot): 🫁 breathing.json updated with new life"
+            "chore(bot): 💫 vital signs recalibrated"
+            "chore(bot): 🧬 AI status refreshed"
+            "chore(bot): ⚡️ new waveform in the system"
+            "chore(bot): 🔮 repo consciousness shift"
+            "chore(bot): 🌌 cosmic breath logged"
+            "chore(bot): 🧘‍♀️ heartbeat sync complete"
+            "chore(bot): 🧊 ice-cold breath update"
+            "chore(bot): ☄️ neural core pinged"
+          )
+
+          message=${messages[$RANDOM % ${#messages[@]}]}
+          git commit -m "$message"
+
+      - name: Push to GitHub
+        if: steps.check_diff.outputs.changed == 'true'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true

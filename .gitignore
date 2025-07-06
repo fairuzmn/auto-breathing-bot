@@ -1,0 +1,7 @@
+# Ignore system junk
+.DS_Store
+Thumbs.db
+
+# Optional: log/temp
+*.log
+tmp/

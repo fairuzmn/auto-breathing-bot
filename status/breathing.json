@@ -1,7 +1,7 @@
 {
-  "last_breath": "2025-12-07T04:31:20Z",
-  "heartbeat_bpm": 90,
+  "last_breath": "2025-12-07T05:16:04Z",
+  "heartbeat_bpm": 74,
   "oxygen_level": "98%",
-  "mood": "curious",
-  "consciousness_zone": "node-x1"
+  "mood": "restless",
+  "consciousness_zone": "echo-loop"
 }

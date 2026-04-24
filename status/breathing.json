@@ -1,7 +1,7 @@
 {
-  "last_breath": "2026-04-24T09:28:35Z",
-  "heartbeat_bpm": 80,
+  "last_breath": "2026-04-24T11:04:34Z",
+  "heartbeat_bpm": 95,
   "oxygen_level": "99%",
-  "mood": "focused",
-  "consciousness_zone": "node-x1"
+  "mood": "alert",
+  "consciousness_zone": "deep-thought"
 }

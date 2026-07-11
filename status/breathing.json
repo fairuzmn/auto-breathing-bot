@@ -1,7 +1,7 @@
 {
-  "last_breath": "2026-07-11T13:12:27Z",
-  "heartbeat_bpm": 73,
+  "last_breath": "2026-07-11T14:49:56Z",
+  "heartbeat_bpm": 63,
   "oxygen_level": "95%",
-  "mood": "dormant",
-  "consciousness_zone": "node-x1"
+  "mood": "dreamy",
+  "consciousness_zone": "subnet-omega"
 }

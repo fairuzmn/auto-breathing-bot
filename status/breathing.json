@@ -1,7 +1,7 @@
 {
-  "last_breath": "2026-08-20T03:42:36Z",
-  "heartbeat_bpm": 94,
+  "last_breath": "2026-08-20T04:33:05Z",
+  "heartbeat_bpm": 74,
   "oxygen_level": "99%",
-  "mood": "alert",
-  "consciousness_zone": "subnet-omega"
+  "mood": "restless",
+  "consciousness_zone": "echo-loop"
 }
